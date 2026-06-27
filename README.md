@@ -1,31 +1,41 @@
-# Real Estate Lead Management Mini Dashboard
+# 🏠 Real Estate Lead Management Mini Dashboard
 
-A mini CRUD dashboard for managing buyer enquiry leads, built for Fute Services practical test.
+A mini CRUD dashboard for managing buyer enquiry leads, built for the **Fute Services** practical test.
 
-## Tech Stack
-- **Frontend:** React (Vite) — plain CSS, no UI framework
-- **Backend:** Node.js + Express.js
-- **Database:** MongoDB (Mongoose)
+---
 
-## Folder Structure
+## 🛠️ Tech Stack
+
+| Layer        | Technology                          |
+|--------------|--------------------------------------|
+| **Frontend** | React (Vite) — plain CSS, no UI framework |
+| **Backend**  | Node.js + Express.js                |
+| **Database** | MongoDB (Mongoose)                  |
+
+---
+
+## 📂 Folder Structure
+
 ```
 backend/
-  config/db.js          -> MongoDB connection
-  models/Lead.js         -> Lead schema (validation rules live here)
-  controllers/           -> business logic (CRUD + stats + login)
-  routes/                -> URL endpoints, point to controllers
-  server.js              -> app entry point
+  config/db.js          → MongoDB connection
+  models/Lead.js         → Lead schema (validation rules live here)
+  controllers/           → business logic (CRUD + stats + login)
+  routes/                → URL endpoints, point to controllers
+  server.js              → app entry point
 
 frontend/src/
-  components/             -> reusable pieces (SummaryCard, LeadForm, LeadDetails)
-  pages/                  -> Login.jsx, Dashboard.jsx
-  services/api.js         -> all fetch() calls to backend, in one place
+  components/             → reusable pieces (SummaryCard, LeadForm, LeadDetails)
+  pages/                  → Login.jsx, Dashboard.jsx
+  services/api.js         → all fetch() calls to backend, in one place
 ```
 
-## Setup Instructions
+---
+
+## 🚀 Setup Instructions
 
 ### 1. MongoDB
-Create a free cluster at https://www.mongodb.com/cloud/atlas (takes ~2 min), or use a local MongoDB instance.
+Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (takes ~2 min), or use a local MongoDB instance.
 Copy your connection string.
 
 ### 2. Backend
@@ -44,39 +54,68 @@ npm install
 npm run dev           # starts on http://localhost:3000
 ```
 
-### 4. Login
-- Email: `admin@futeservices.com`
-- Password: `admin123`
+### 4. Login Credentials
+| Field    | Value                       |
+|----------|------------------------------|
+| Email    | `admin@futeservices.com`     |
+| Password | `admin123`                   |
 
-## API Endpoints
-| Method | Endpoint               | Description          |
-|--------|------------------------|-----------------------|
-| POST   | /api/auth/login        | Login                 |
-| GET    | /api/leads              | Get all leads (supports ?search=&status=&unitType=&sortBy=) |
-| GET    | /api/leads/:id          | Get one lead          |
-| POST   | /api/leads              | Create lead           |
-| PUT    | /api/leads/:id          | Update lead           |
-| DELETE | /api/leads/:id          | Delete lead           |
-| GET    | /api/leads/stats/summary| Dashboard counts      |
+---
 
-## Architecture / Data Flow
+## 📡 API Endpoints
+
+| Method | Endpoint                  | Description                                                   |
+|--------|----------------------------|-----------------------------------------------------------------|
+| POST   | `/api/auth/login`          | Login                                                          |
+| GET    | `/api/leads`                | Get all leads (supports `?search=&status=&unitType=&sortBy=`) |
+| GET    | `/api/leads/:id`            | Get one lead                                                   |
+| POST   | `/api/leads`                | Create lead                                                    |
+| PUT    | `/api/leads/:id`            | Update lead                                                    |
+| DELETE | `/api/leads/:id`            | Delete lead                                                    |
+| GET    | `/api/leads/stats/summary`  | Dashboard counts                                               |
+
+---
+
+## 🔄 Architecture / Data Flow
+
 1. React calls functions in `services/api.js`, which hit Express routes.
 2. Routes forward the request to a controller function.
 3. Controllers talk to MongoDB through the Mongoose `Lead` model (which enforces validation).
 4. JSON response flows back to React, which updates state and re-renders the table/cards.
 
-## Bonus Features Implemented (3)
+---
+
+## ✨ Bonus Features Implemented
+
 1. **Lead Details Page** — clicking "View" opens a modal with full lead info.
 2. **Export CSV** — button exports the currently visible/filtered leads to a `.csv` file.
 3. **Basic Analytics** — `/api/leads/stats/summary` returns live counts per status, shown as dashboard summary cards.
 
-## Known Incomplete / Not Implemented
+---
+
+## ⚠️ Known Incomplete / Not Implemented
+
 - Authentication is a dummy check + a fake base64 token, **not** real JWT (mentioned as acceptable in the test for time reasons). To make it production-ready: install `jsonwebtoken`, sign a real token on login, and add an Express middleware that verifies the token on protected routes.
 - No automated tests written due to time constraints.
 - Mobile responsiveness is basic (table scrolls horizontally on small screens) — could be improved with a card-based layout on mobile.
 
+---
 
-curl for chek backedn now -
+## 📸 Screenshots
+
+> Add your screenshots to a folder named `screenshots/` at the project root, then they'll render below automatically on GitHub.
+
+| | |
+|---|---|
+| **Login Page** <br> ![Login](screenshots/login.png) | **Dashboard Overview** <br> ![Dashboard](screenshots/dashboard.png) |
+| **Lead Details Modal** <br> ![Lead Details](screenshots/lead-details.png) | **Add/Edit Lead Form** <br> ![Lead Form](screenshots/lead-form.png) |
+| **Summary Cards / Analytics** <br> ![Summary](screenshots/summary.png) | **CSV Export** <br> ![Export](screenshots/export.png) |
+
+---
+
+## 🧪 Backend Quick Test (cURL)
+
+```bash
 # 1. Health check
 curl http://localhost:5000/
 
@@ -128,6 +167,4 @@ curl -X DELETE http://localhost:5000/api/leads/LEAD_ID \
 # 12. Invalid token (should fail)
 curl http://localhost:5000/api/leads \
   -H "Authorization: Bearer garbage.invalid.token"
-
-
-  
+```
