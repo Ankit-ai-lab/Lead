@@ -168,25 +168,13 @@ curl -X DELETE http://localhost:5000/api/leads/LEAD_ID \
 curl http://localhost:5000/api/leads \
   -H "Authorization: Bearer garbage.invalid.token"
 ```
-<!-- 
+
 lead-dashboard\upploads\Screenshot 2026-06-27 185428.png
 lead-dashboard\upploads\Screenshot 2026-06-27 185318.png
 lead-dashboard\upploads\Screenshot 2026-06-27 185304.png
 lead-dashboard\upploads\Screenshot 2026-06-27 185257.png
 lead-dashboard\upploads\Screenshot 2026-06-27 185223.png
 lead-dashboard\upploads\Screenshot 2026-06-27 185213.png
-lead-dashboard\upploads\Screenshot 2026-06-27 185202.png -->
-lead-dashboard/
-│
-├── backend/
-├── frontend/
-├── upploads/
-│   ├── Screenshot 2026-06-27 185202.png
-│   ├── Screenshot 2026-06-27 185213.png
-│   ├── Screenshot 2026-06-27 185223.png
-│   ├── Screenshot 2026-06-27 185257.png
-│   ├── Screenshot 2026-06-27 185304.png
-│   ├── Screenshot 2026-06-27 185318.png
-│   └── Screenshot 2026-06-27 185428.png
-│
-└── README.md
+lead-dashboard\upploads\Screenshot 2026-06-27 185202.png
+
+
