@@ -1,5 +1,3 @@
-// src/components/SummaryCard.jsx
-// Small reusable card - used 6 times on the dashboard (one per status + total)
 
 function SummaryCard({ label, count, color }) {
   return (
