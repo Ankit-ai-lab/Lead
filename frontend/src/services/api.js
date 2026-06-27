@@ -1,7 +1,7 @@
 // const BASE_URL = 'http://localhost:5000/api';
 // const BASE_URL = import.meta.env.VITE_API_URL || "https://lead-cxpn.onrender.com/api";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 export const login = async (email, password) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
